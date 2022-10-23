@@ -35,16 +35,22 @@ def retry(func):
 
 # 截屏并发送到目录./screen, 默认返回cv2读取后的图片
 def screen_shot():
+    path = "../screen"
+    if not os.path.exists(path):
+        os.mkdir(path)
     screen = ImageGrab.grab()
-    screen.save('./screen/screen.jpg')
+    screen.save(path + '/screen.jpg')
     #('截图已完成 ', time.ctime())
-    screen = cv2.imread('./screen/screen.jpg')
+    screen = cv2.imread(path + '/screen.jpg')
     return screen
 
 
 def save_shot_box(id, box):
+    path = "../screen/result"
+    if not os.path.exists(path):
+        os.mkdir(path)
     screen = ImageGrab.grab(box)
-    screen.save('./screen/result/'+id+'.jpg', quality=100)
+    screen.save(path + '/'+id+'.jpg', quality=100)
     #print('截图已完成 ', time.ctime())
 
 # ADB命令模拟点击屏幕，参数pos为目标坐标(x, y)
