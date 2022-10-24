@@ -50,7 +50,7 @@ def save_shot_box(id, box):
     if not os.path.exists(path):
         os.mkdir(path)
     screen = ImageGrab.grab(box)
-    screen.save(path + '/'+id+'.jpg', quality=100)
+    screen.save(path + '/'+id+'.jpg', quality=99)
     #print('截图已完成 ', time.ctime())
 
 # ADB命令模拟点击屏幕，参数pos为目标坐标(x, y)
